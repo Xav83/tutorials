@@ -9,4 +9,9 @@ jobs:
       - script: |
           cd "Chocolatey test environment on Ubuntu"
           sh setup.sh
+          error_code=$?
+          if [[ $error_code -eq 0 ]]; then
+              exit 1
+          fi
+          exit 0
         displayName: Sets up the test environment of Chocolatey tests on Ubuntu
