@@ -1,0 +1,19 @@
+
+version: 1.0.{build}
+
+branches:
+  only:
+    - main
+
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: macos-bigsur
+      name: macos-bigsur
+    - APPVEYOR_BUILD_WORKER_IMAGE: macos
+      name: macos
+    - APPVEYOR_BUILD_WORKER_IMAGE: macos-mojave
+      name: macos-mojave
+
+build_script:
+ - cd "Xcode version"
+ - ./run.sh
