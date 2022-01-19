@@ -1,3 +1,4 @@
+---
 name: Xcode versions
 
 on: push   # yamllint disable-line rule:truthy
