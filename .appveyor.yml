@@ -1,4 +1,3 @@
-
 version: 1.0.{build}
 
 branches:
@@ -15,5 +14,5 @@ environment:
       name: macos-mojave
 
 build_script:
- - cd "Xcode version"
- - ./run.sh
+  - cd "Xcode version"
+  - ./run.sh

@@ -1,12 +1,12 @@
 parameters:
-- name: 'xcode_versions'
-  type: object
+  - name: 'xcode_versions'
+    type: object
 
 steps:
-- ${{ each xv in parameters.xcode_versions }}:
-  - script: |
-      sudo xcode-select -s /Applications/${{ xv }}.app
-    displayName: Selects a specific version of Xcode
-  - script: |
-      sudo xcode-select -p
-    displayName: Displays the current version of Xcode
+  - ${{ each xv in parameters.xcode_versions }}:
+      - script: |
+          sudo xcode-select -s /Applications/${{ xv }}.app
+        displayName: Selects a specific version of Xcode
+      - script: |
+          sudo xcode-select -p
+        displayName: Displays the current version of Xcode
