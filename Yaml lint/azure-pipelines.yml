@@ -10,4 +10,4 @@ steps:
     displayName: Installs the latest version of yamllint
   - script: |
       yamllint .
-    displayName: Runs yamllint on all the yaml file of the repository
+    displayName: Runs yamllint on all the yaml files of the repository
