@@ -40,3 +40,28 @@ jobs:
       - template: './Xcode version/azure-pipelines.yml'
         parameters:
           xcode_versions: ${{ xcodeVersion.value.version }}
+  - job: Yaml_linter
+    strategy:
+      matrix:
+        windows_latest:
+          imageName: 'windows-latest'
+        windows_2022:
+          imageName: 'windows-2022'
+        windows_2019:
+          imageName: 'windows-2019'
+        mac_latest:
+          imageName: 'macOS-latest'
+        mac_11:
+          imageName: 'macOS-11'
+        mac_10_15:
+          imageName: 'macOS-10.15'
+        linux_latest:
+          imageName: 'ubuntu-latest'
+        linux_20_04:
+          imageName: 'ubuntu-20.04'
+        linux_18_04:
+          imageName: 'ubuntu-18.04'
+    pool:
+      vmImage: $(imageName)
+    steps:
+      - template: './Yaml lint/azure-pipelines.yml'
