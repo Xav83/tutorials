@@ -11,9 +11,6 @@ parameters:
     macOS_11:  
       name: macOS-11
       version: ['Xcode_13.2', 'Xcode_13.1', 'Xcode_13.0', 'Xcode_12.5.1', 'Xcode_12.4', 'Xcode_11.7']
-    macOS_10_14:
-      name: macOS-10.14
-      version: ['Xcode_11.3.1', 'Xcode_11.3', 'Xcode_11.2.1', 'Xcode_11.2', 'Xcode_11.1', 'Xcode_11', 'Xcode_10.3', 'Xcode_10.2.1', 'Xcode_10.2', 'Xcode_10.1', 'Xcode_10', 'Xcode_9.4.1']
     macOS_10_15:
       name: macOS-10.15
       version: ['Xcode_12.4', 'Xcode_12.3', 'Xcode_12.2', 'Xcode_12.1.1', 'Xcode_12.1', 'Xcode_12.0.1', 'Xcode_11.7', 'Xcode_11.6', 'Xcode_11.5', 'Xcode_11.4.1', 'Xcode_11.3.1', 'Xcode_11.2.1', 'Xcode_10.3']
