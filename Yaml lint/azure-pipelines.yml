@@ -1,6 +1,11 @@
 ---
 steps:
   - script: |
+      git config --global core.autocrlf false
+    displayName: Sets the end of line to be the same whatever the OS is
+  - checkout: self
+    displayName: Checks out the repository
+  - script: |
       pip install yamllint
     displayName: Installs the latest version of yamllint
   - script: |
