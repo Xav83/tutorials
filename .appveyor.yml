@@ -48,4 +48,4 @@ for:
       - ./run.sh
   - build_script:
       - pip install yamllint
-      - yamllint .
+      - yamllint --strict . 

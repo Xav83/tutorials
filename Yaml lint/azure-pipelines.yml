@@ -9,5 +9,5 @@ steps:
       pip install yamllint
     displayName: Installs the latest version of yamllint
   - script: |
-      yamllint .
+      yamllint --strict .
     displayName: Runs yamllint on all the yaml files of the repository

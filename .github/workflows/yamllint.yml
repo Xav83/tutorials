@@ -13,4 +13,4 @@ jobs:
       - name: Installs the latest version of Yamllint
         run: pip install yamllint
       - name: Runs yamllint on all the yaml file of the repository
-        run: yamllint .
+        run: yamllint --strict .
