@@ -7,13 +7,45 @@ branches:
 
 environment:
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos-bigsur
-      name: macos-bigsur
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos
-      name: macos
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos-mojave
-      name: macos-mojave
+    - job_name: Visual Studio 2022 (Windows)
+      appveyor_build_worker_image: Visual Studio 2022
+    - job_name: Visual Studio 2019 (Windows)
+      appveyor_build_worker_image: Visual Studio 2019
+    - job_name: Visual Studio 2017 (Windows)
+      appveyor_build_worker_image: Visual Studio 2017
+    - job_name: Visual Studio 2015 (Windows)
+      appveyor_build_worker_image: Visual Studio 2015
+    - job_name: Visual Studio 2013 (Windows)
+      appveyor_build_worker_image: Visual Studio 2013
+    - job_name: Ubuntu (Linux)
+      appveyor_build_worker_image: Ubuntu
+    - job_name: Ubuntu 16_04 (Linux)
+      appveyor_build_worker_image: Ubuntu1604
+    - job_name: Ubuntu 20_04 (Linux)
+      appveyor_build_worker_image: Ubuntu2004
+    - job_name: MacOS Bigsur
+      APPVEYOR_BUILD_WORKER_IMAGE: macos-bigsur
+    - job_name: MacOS
+      APPVEYOR_BUILD_WORKER_IMAGE: macos
+    - job_name: MacOS Mojave
+      APPVEYOR_BUILD_WORKER_IMAGE: macos-mojave
 
-build_script:
-  - cd "Xcode version"
-  - ./run.sh
+# job-specific configurations
+for:
+  - matrix:
+      only:
+        - job_name: Ubuntu (Linux)
+        - job_name: Ubuntu 20_04 (Linux)
+  - build_script:
+      - set PATH=$PATH:/home/appveyor/.local/bin
+  - matrix:
+      only:
+        - job_name: MacOS Bigsur
+        - job_name: MacOS
+        - job_name: MacOS Mojave
+    build_script:
+      - cd "Xcode version"
+      - ./run.sh
+  - build_script:
+      - pip install yamllint
+      - yamllint .
