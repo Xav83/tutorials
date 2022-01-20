@@ -1,0 +1,39 @@
+---
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.3.0
+
+executors:
+  windows: win/default
+  linux:
+    machine:
+      image: ubuntu-2004:202111-02
+
+jobs:
+  yamllint:
+    parameters:
+      os:
+        type: executor
+    executor: << parameters.os >>
+    steps:
+      - run:
+          name: "Sets the end of line to be the same whatever the OS is"
+          command: "git config --global core.autocrlf false"
+      - checkout
+      - run:
+          name: "Installs the latest version of Yamllint"
+          command: "pip install yamllint"
+      - run:
+          name: "Runs yamllint on all the yaml file of the repository"
+          command: "yamllint ."
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  workflow:
+    jobs:
+      - yamllint:
+          matrix:
+            parameters:
+              os: [windows, linux]
