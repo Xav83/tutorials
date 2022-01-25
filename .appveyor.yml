@@ -1,19 +1,49 @@
-
+---
 version: 1.0.{build}
 
 branches:
   only:
     - main
 
+os:
+  - Visual Studio 2022
+  - Visual Studio 2019
+  - Visual Studio 2015
+  - Visual Studio 2013
+  - Ubuntu
+  - Ubuntu1604
+  - Ubuntu2004
+  - macos-bigsur
+  - macos
+  - macos-mojave
+
+
 environment:
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos-bigsur
-      name: macos-bigsur
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos
-      name: macos
-    - APPVEYOR_BUILD_WORKER_IMAGE: macos-mojave
-      name: macos-mojave
+    - job_name: Xcode version
+      script_to_run: Xcode version/run.sh
+    - job_name: Yaml linter
+      script_to_run: Yaml lint/run.sh
 
-build_script:
- - cd "Xcode version"
- - ./run.sh
+matrix:
+  exclude:
+    - os: Visual Studio 2022
+      job_name: Xcode version
+    - os: Visual Studio 2019
+      job_name: Xcode version
+    - os: Visual Studio 2015
+      job_name: Xcode version
+    - os: Visual Studio 2013
+      job_name: Xcode version
+    - os: Ubuntu
+      job_name: Xcode version
+    - os: Ubuntu1604
+      job_name: Xcode version
+    - os: Ubuntu2004
+      job_name: Xcode version
+
+# job-specific configurations
+for:
+  - build_script:
+      - sh: "sh \"$script_to_run\""
+      - cmd: "sh \"%script_to_run%\""
