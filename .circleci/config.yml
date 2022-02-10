@@ -27,6 +27,19 @@ jobs:
       - run:
           name: "Runs yamllint on all the yaml file of the repository"
           command: "yamllint --strict ."
+  black:
+    parameters:
+      os:
+        type: executor
+    executor: << parameters.os >>
+    steps:
+      - checkout
+      - run:
+          name: "Installs the latest version of Black"
+          command: "pip install black"
+      - run:
+          name: "Runs black on all the yaml file of the repository"
+          command: "black --check ."
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -34,6 +47,10 @@ workflows:
   workflow:
     jobs:
       - yamllint:
+          matrix:
+            parameters:
+              os: [windows, linux]
+      - black:
           matrix:
             parameters:
               os: [windows, linux]
