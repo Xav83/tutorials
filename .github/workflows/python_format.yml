@@ -1,0 +1,16 @@
+---
+name: Yaml linter
+
+on: push   # yamllint disable-line rule:truthy
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-11, macos-latest, macos-10.15, ubuntu-latest, ubuntu-20.04, ubuntu-18.04, windows-2022, windows-latest, windows-2019, windows-2016]  # yamllint disable-line rule:line-length
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Installs the latest version of Black
+        run: pip install black
+      - name: Runs black on all the python scripts of the repository to make sure they are all formatted properly
+        run: black --check .
