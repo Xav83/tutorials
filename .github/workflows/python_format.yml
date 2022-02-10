@@ -11,6 +11,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Installs the latest version of Black
-        run: pip install black
+        run: pip3 install black
       - name: Checks if the python scripts are formatted properly with black
         run: black --check .

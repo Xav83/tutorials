@@ -36,7 +36,7 @@ jobs:
       - checkout
       - run:
           name: "Installs the latest version of Black"
-          command: "pip install black"
+          command: "pip3 install black"
       - run:
           name: "Runs black on all the yaml file of the repository"
           command: "black --check ."

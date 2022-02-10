@@ -3,7 +3,7 @@ steps:
   - checkout: self
     displayName: Checks out the repository
   - script: |
-      pip install black
+      pip3 install black
     displayName: Installs the latest version of yamllint
   - script: |
       black  --check .
