@@ -1,0 +1,13 @@
+---
+steps:
+  - checkout: self
+    displayName: Checks out the repository
+  - script: |
+      pip install black
+    displayName: Installs the latest version of yamllint
+  - script: |
+      black .
+    displayName: Runs black on all the python files of the repository
+  - script: |
+      git diff --exit-code
+    displayName: Checks if all the files versionned were already formatted
