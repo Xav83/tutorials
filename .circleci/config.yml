@@ -1,12 +1,18 @@
 ---
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.3.0
+parameters:
+  shell:
+    type: string
+    default: "bash.exe"
 
 executors:
-  windows: win/default
-  linux:
+  windows: &my_windows
+    machine:
+      image: windows-server-2019-vs2019:stable
+      resource_class: windows.medium
+      shell: bash.exe
+  linux: &my_linux
     machine:
       image: ubuntu-2004:202111-02
 
@@ -34,9 +40,24 @@ jobs:
     executor: << parameters.os >>
     steps:
       - checkout
+      - when:
+          condition:
+            equal: [*my_windows, << parameters.os >>]
+          steps:
+            - run:
+                name: "Installs python3"
+                command: choco install python3
+      - when:
+          condition:
+            equal: [*my_linux, << parameters.os >>]
+          steps:
+            - run:
+                name: "Sets python3 as default python to use"
+                command: echo "export PATH=/usr/bin:/home/circleci/.local/bin:$PATH" >> ~/.bashrc   # yamllint disable-line rule:line-length
       - run:
           name: "Installs the latest version of Black"
-          command: "pip3 install black"
+          command: |
+            pip install black
       - run:
           name: "Runs black on all the yaml file of the repository"
           command: "black --check ."
