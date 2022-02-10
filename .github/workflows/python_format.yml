@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Installs the latest version of Black
         run: pip install black
-      - name: Runs black on all the python scripts of the repository to make sure they are all formatted properly
+      - name: Checks if the python scripts are formatted properly with black
         run: black --check .
