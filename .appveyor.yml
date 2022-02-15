@@ -24,6 +24,8 @@ environment:
       script_to_run: Xcode version/run.sh
     - job_name: Yaml linter
       script_to_run: Yaml lint/run.sh
+    - job_name: Python format
+      script_to_run: Python format/run.sh
 
 matrix:
   exclude:

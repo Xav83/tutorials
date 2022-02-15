@@ -1,0 +1,10 @@
+---
+steps:
+  - checkout: self
+    displayName: Checks out the repository
+  - script: |
+      pip3 install black
+    displayName: Installs the latest version of yamllint
+  - script: |
+      black  --check .
+    displayName: Checks if the python scripts are formatted properly with black
