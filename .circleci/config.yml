@@ -15,6 +15,9 @@ executors:
   linux: &my_linux
     machine:
       image: ubuntu-2004:202111-02
+  mac: &my_mac
+    macos:
+      xcode: 13.2.1
 
 jobs:
   yamllint:
@@ -27,6 +30,13 @@ jobs:
           name: "Sets the end of line to be the same whatever the OS is"
           command: "git config --global core.autocrlf false"
       - checkout
+      - when:
+          condition:
+            equal: [*my_mac, << parameters.os >>]
+          steps:
+            - run:
+                name: "Sets python3 as default python to use"
+                command: pip3 install --upgrade pip
       - run:
           name: "Installs the latest version of Yamllint"
           command: "pip install yamllint"
@@ -54,6 +64,13 @@ jobs:
             - run:
                 name: "Sets python3 as default python to use"
                 command: echo "export PATH=/usr/bin:/home/circleci/.local/bin:$PATH" >> ~/.bashrc   # yamllint disable-line rule:line-length
+      - when:
+          condition:
+            equal: [*my_mac, << parameters.os >>]
+          steps:
+            - run:
+                name: "Sets python3 as default python to use"
+                command: pip3 install --upgrade pip
       - run:
           name: "Installs the latest version of Black"
           command: |
@@ -70,8 +87,8 @@ workflows:
       - yamllint:
           matrix:
             parameters:
-              os: [windows, linux]
+              os: [windows, linux, mac]
       - black:
           matrix:
             parameters:
-              os: [windows, linux]
+              os: [windows, linux, mac]
