@@ -53,12 +53,10 @@ jobs:
           imageName: 'macOS-12'
         mac_11:
           imageName: 'macOS-11'
-        linux_latest:
+        linux_22_04:
           imageName: 'ubuntu-latest'
         linux_20_04:
           imageName: 'ubuntu-20.04'
-        linux_18_04:
-          imageName: 'ubuntu-18.04'
     pool:
       vmImage: $(imageName)
     steps:
@@ -78,12 +76,10 @@ jobs:
           imageName: 'macOS-12'
         mac_11:
           imageName: 'macOS-11'
-        linux_latest:
-          imageName: 'ubuntu-latest'
+        linux_22_04:
+          imageName: 'ubuntu-22.04'
         linux_20_04:
           imageName: 'ubuntu-20.04'
-        linux_18_04:
-          imageName: 'ubuntu-18.04'
     pool:
       vmImage: $(imageName)
     steps:
