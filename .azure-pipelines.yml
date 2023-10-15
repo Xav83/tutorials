@@ -47,12 +47,12 @@ jobs:
           imageName: 'windows-2022'
         windows_2019:
           imageName: 'windows-2019'
-        mac_latest:
-          imageName: 'macOS-latest'
+        mac_13:
+          imageName: 'macOS-13'
+        mac_12:
+          imageName: 'macOS-12'
         mac_11:
           imageName: 'macOS-11'
-        mac_10_15:
-          imageName: 'macOS-10.15'
         linux_latest:
           imageName: 'ubuntu-latest'
         linux_20_04:
@@ -72,12 +72,12 @@ jobs:
           imageName: 'windows-2022'
         windows_2019:
           imageName: 'windows-2019'
-        mac_latest:
-          imageName: 'macOS-latest'
+        mac_13:
+          imageName: 'macOS-13'
+        mac_12:
+          imageName: 'macOS-12'
         mac_11:
           imageName: 'macOS-11'
-        mac_10_15:
-          imageName: 'macOS-10.15'
         linux_latest:
           imageName: 'ubuntu-latest'
         linux_20_04:
