@@ -6,15 +6,15 @@ parameters:
   - name: xcodeVersions
     type: object
     default:
-      macOS_latest:
-        name: macOS-latest
-        version: ['Xcode_13.2', 'Xcode_13.1', 'Xcode_13.0', 'Xcode_12.5.1', 'Xcode_12.4', 'Xcode_11.7']   # yamllint disable-line rule:line-length
+      macOS_13:
+        name: macOS-13
+        version: ['Xcode_15.0', 'Xcode_14.3.1', 'Xcode_14.2', 'Xcode_14.1']   # yamllint disable-line rule:line-length
+      macOS_12:
+        name: macOS-12
+        version: ['Xcode_14.2', 'Xcode_14.1', 'Xcode_14.0.1', 'Xcode_13.4.1', 'Xcode_13.3.1', 'Xcode_13.2.1', 'Xcode_13.1']   # yamllint disable-line rule:line-length
       macOS_11:
         name: macOS-11
-        version: ['Xcode_13.2', 'Xcode_13.1', 'Xcode_13.0', 'Xcode_12.5.1', 'Xcode_12.4', 'Xcode_11.7']   # yamllint disable-line rule:line-length
-      macOS_10_15:
-        name: macOS-10.15
-        version: ['Xcode_12.4', 'Xcode_12.3', 'Xcode_12.2', 'Xcode_12.1.1', 'Xcode_12.1', 'Xcode_12.0.1', 'Xcode_11.7', 'Xcode_11.6', 'Xcode_11.5', 'Xcode_11.4.1', 'Xcode_11.3.1', 'Xcode_11.2.1', 'Xcode_10.3']   # yamllint disable-line rule:line-length
+        version: ['Xcode_13.2.1', 'Xcode_13.1', 'Xcode_13.0', 'Xcode_12.5.1', 'Xcode_12.4', 'Xcode_11.7']   # yamllint disable-line rule:line-length
 
 jobs:
   - job: Chocolatey_test_environment
