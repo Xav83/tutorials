@@ -7,8 +7,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-11, macos-latest, macos-10.15, ubuntu-latest, ubuntu-20.04, ubuntu-18.04, windows-2022, windows-latest, windows-2019, windows-2016]  # yamllint disable-line rule:line-length
+        os: [macos-13, macos-12, macos-11, ubuntu-22.04, ubuntu-20.04, windows-2022, windows-2019]  # yamllint disable-line rule:line-length
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: psf/black@stable
+        with:
+          version: "~= 23.3.0"
