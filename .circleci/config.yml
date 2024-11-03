@@ -63,7 +63,7 @@ jobs:
           steps:
             - run:
                 name: "Sets python3 as default python to use"
-                command: echo "export PATH=/usr/bin:/home/circleci/.local/bin:$PATH" >> ~/.bashrc   # yamllint disable-line rule:line-length
+                command: echo "export PATH=/usr/bin:/home/circleci/.local/bin:$PATH" >> ~/.bashrc # yamllint disable-line rule:line-length
       - when:
           condition:
             equal: [*my_mac, << parameters.os >>]

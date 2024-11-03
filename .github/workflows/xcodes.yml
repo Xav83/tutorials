@@ -1,14 +1,28 @@
 ---
 name: Xcode versions
 
-on: push   # yamllint disable-line rule:truthy
+on: push # yamllint disable-line rule:truthy
 
 jobs:
   build:
     strategy:
       matrix:
         os: [macos-13, macos-12, macos-11]
-        xcode_version: [15.0, 14.3.1, 14.2, 14.1, 14.0.1, 13.3.1, 13.2.1, 13.1, 13.0, 12.5.1, 12.4, 11.7]   # yamllint disable-line rule:line-length
+        xcode_version:
+          [
+            15.0,
+            14.3.1,
+            14.2,
+            14.1,
+            14.0.1,
+            13.3.1,
+            13.2.1,
+            13.1,
+            13.0,
+            12.5.1,
+            12.4,
+            11.7,
+          ]
         exclude:
           - os: macos-13
             xcode_version: 14.0.1
@@ -56,4 +70,4 @@ jobs:
     steps:
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '${{ matrix.xcode_version }}'
+          xcode-version: "${{ matrix.xcode_version }}"

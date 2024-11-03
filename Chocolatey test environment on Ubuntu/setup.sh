@@ -48,5 +48,5 @@ echo "Launchs the virtual environment with Vagrant"
 
 cd chocolatey-test-environment
 sed -i 's/v.gui = true//g' Vagrantfile
-sed -i 's/vb.customize ["modifyvm", :id, "--cpus", "2"]/vb.cpus = 1/g'  Vagrantfile
+sed -i 's/vb.customize ["modifyvm", :id, "--cpus", "2"]/vb.cpus = 1/g' Vagrantfile
 vagrant up

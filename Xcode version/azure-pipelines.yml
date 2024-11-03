@@ -1,6 +1,6 @@
 ---
 parameters:
-  - name: 'xcode_versions'
+  - name: "xcode_versions"
     type: object
 
 steps:

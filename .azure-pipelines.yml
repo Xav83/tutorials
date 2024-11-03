@@ -8,18 +8,35 @@ parameters:
     default:
       macOS_13:
         name: macOS-13
-        version: ['Xcode_15.0', 'Xcode_14.3.1', 'Xcode_14.2', 'Xcode_14.1']   # yamllint disable-line rule:line-length
+        version: ["Xcode_15.0", "Xcode_14.3.1", "Xcode_14.2", "Xcode_14.1"] # yamllint disable-line rule:line-length
       macOS_12:
         name: macOS-12
-        version: ['Xcode_14.2', 'Xcode_14.1', 'Xcode_14.0.1', 'Xcode_13.4.1', 'Xcode_13.3.1', 'Xcode_13.2.1', 'Xcode_13.1']   # yamllint disable-line rule:line-length
+        version:
+          [
+            "Xcode_14.2",
+            "Xcode_14.1",
+            "Xcode_14.0.1",
+            "Xcode_13.4.1",
+            "Xcode_13.3.1",
+            "Xcode_13.2.1",
+            "Xcode_13.1",
+          ]
       macOS_11:
         name: macOS-11
-        version: ['Xcode_13.2.1', 'Xcode_13.1', 'Xcode_13.0', 'Xcode_12.5.1', 'Xcode_12.4', 'Xcode_11.7']   # yamllint disable-line rule:line-length
+        version:
+          [
+            "Xcode_13.2.1",
+            "Xcode_13.1",
+            "Xcode_13.0",
+            "Xcode_12.5.1",
+            "Xcode_12.4",
+            "Xcode_11.7",
+          ]
 
 jobs:
   - job: Chocolatey_test_environment
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: "ubuntu-20.04"
     steps:
       - script: |
           cd "Chocolatey test environment on Ubuntu"
@@ -33,54 +50,54 @@ jobs:
   - ${{ each xcodeVersion in parameters.xcodeVersions }}:
       - job: Xcode_version_${{ xcodeVersion.key }}
         pool:
-          vmImage: '${{ xcodeVersion.value.name }}'
+          vmImage: "${{ xcodeVersion.value.name }}"
         steps:
-          - template: './Xcode version/azure-pipelines.yml'
+          - template: "./Xcode version/azure-pipelines.yml"
             parameters:
               xcode_versions: ${{ xcodeVersion.value.version }}
   - job: Yaml_linter
     strategy:
       matrix:
         windows_latest:
-          imageName: 'windows-latest'
+          imageName: "windows-latest"
         windows_2022:
-          imageName: 'windows-2022'
+          imageName: "windows-2022"
         windows_2019:
-          imageName: 'windows-2019'
+          imageName: "windows-2019"
         mac_13:
-          imageName: 'macOS-13'
+          imageName: "macOS-13"
         mac_12:
-          imageName: 'macOS-12'
+          imageName: "macOS-12"
         mac_11:
-          imageName: 'macOS-11'
+          imageName: "macOS-11"
         linux_22_04:
-          imageName: 'ubuntu-latest'
+          imageName: "ubuntu-latest"
         linux_20_04:
-          imageName: 'ubuntu-20.04'
+          imageName: "ubuntu-20.04"
     pool:
       vmImage: $(imageName)
     steps:
-      - template: './Yaml lint/azure-pipelines.yml'
+      - template: "./Yaml lint/azure-pipelines.yml"
   - job: Python_format
     strategy:
       matrix:
         windows_latest:
-          imageName: 'windows-latest'
+          imageName: "windows-latest"
         windows_2022:
-          imageName: 'windows-2022'
+          imageName: "windows-2022"
         windows_2019:
-          imageName: 'windows-2019'
+          imageName: "windows-2019"
         mac_13:
-          imageName: 'macOS-13'
+          imageName: "macOS-13"
         mac_12:
-          imageName: 'macOS-12'
+          imageName: "macOS-12"
         mac_11:
-          imageName: 'macOS-11'
+          imageName: "macOS-11"
         linux_22_04:
-          imageName: 'ubuntu-22.04'
+          imageName: "ubuntu-22.04"
         linux_20_04:
-          imageName: 'ubuntu-20.04'
+          imageName: "ubuntu-20.04"
     pool:
       vmImage: $(imageName)
     steps:
-      - template: './Python format/azure-pipelines.yml'
+      - template: "./Python format/azure-pipelines.yml"

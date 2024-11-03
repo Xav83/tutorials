@@ -1,13 +1,22 @@
 ---
 name: Python formatter
 
-on: push   # yamllint disable-line rule:truthy
+on: push # yamllint disable-line rule:truthy
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [macos-13, macos-12, macos-11, ubuntu-22.04, ubuntu-20.04, windows-2022, windows-2019]  # yamllint disable-line rule:line-length
+        os:
+          [
+            macos-13,
+            macos-12,
+            macos-11,
+            ubuntu-22.04,
+            ubuntu-20.04,
+            windows-2022,
+            windows-2019,
+          ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
