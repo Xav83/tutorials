@@ -29,8 +29,6 @@ jobs:
           - os: macos-13
             xcode_version: 13.4.1
           - os: macos-13
-            xcode_version: 13.3.1
-          - os: macos-13
             xcode_version: 13.2.1
           - os: macos-13
             xcode_version: 13.1
